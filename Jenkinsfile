@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t zafrii/private_repo:docker_automation_testing .'
+        sh 'sudo docker build -t zafrii/private_repo:docker_automation_testing .'
       }
     }
     stage('Login') {
@@ -19,7 +19,7 @@ pipeline {
     }
     stage('Push') {
       steps {
-        sh 'docker push zafrii/private_repo:docker_automation_testing'
+        sh 'sudo docker push zafrii/private_repo:docker_automation_testing'
       }
     }
   }
