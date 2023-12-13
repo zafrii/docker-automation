@@ -22,7 +22,7 @@ pipeline {
     stage('Push') {
       steps {
         sh 'docker push zafrii/private_repo:docker_automation_testing'
-        sh 'echo $DOCKERHUB_CREDENTIALS_USR'
+        sh 'echo $EC2_DS_USR'
       }
     }
     // stage('Docker Login on EC2') {
