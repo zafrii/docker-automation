@@ -22,18 +22,16 @@ pipeline {
     stage('Push') {
       steps {
         sh 'docker push zafrii/private_repo:docker_automation_testing'
-        sh 'echo $EC2_DS_USR'
       }
     }
-    // stage('Docker Login on EC2') {
-    //   steps {
-    //       sh '$EC2_DS_USR'
-    //       sh """
-    //           ssh -o StrictHostKeyChecking=no -i $EC2_DS_key centos@$EC2_INSTANCE_IP \
-    //           "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
-    //       """
-    //   }
-    // }
+    stage('Docker Login on EC2') {
+      steps {
+          sh """
+              ssh -o StrictHostKeyChecking=no -i $EC2_DS_key centos@$EC2_INSTANCE_IP \
+              "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
+          """
+      }
+    }
     // stage('Docker Pull on EC2') {
     //     steps {
     //         script {
