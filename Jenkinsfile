@@ -26,6 +26,7 @@ pipeline {
     }
     stage('Docker Login on EC2') {
       steps {
+          sh '$EC2_DS'
           sh """
               ssh -o StrictHostKeyChecking=no -i $EC2_DS_key centos@$EC2_INSTANCE_IP \
               "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
