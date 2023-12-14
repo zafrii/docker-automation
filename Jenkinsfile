@@ -11,7 +11,6 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'whoami'
         sh 'docker build -t zafrii/private_repo:docker_automation_testing .'
       }
     }
